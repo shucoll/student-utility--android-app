@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity {
@@ -19,7 +20,6 @@ public class NoteListActivity extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
     static ArrayAdapter notesArrayAdapter;
     List<NotesModel> allNotes;
-    List<String> allTitles;
 
     public void addNote(View view) {
         Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
@@ -55,8 +55,10 @@ public class NoteListActivity extends AppCompatActivity {
     private void showItemsInListView(DataBaseHelper dataBaseHelper) {
         allNotes = dataBaseHelper.getAllNotes();
 
+        List<String>allTitles = new ArrayList<>();
+        
         for(NotesModel notes : allNotes) {
-            allTitles.add(notes.displayAllTitles());
+            allTitles.add(notes.getTitle());
         }
 
         notesArrayAdapter = new ArrayAdapter(NoteListActivity.this,android.R.layout.simple_list_item_1,allTitles);

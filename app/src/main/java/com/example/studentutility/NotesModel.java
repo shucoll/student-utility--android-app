@@ -23,21 +23,16 @@ public class NotesModel {
     public NotesModel() {
     }
 
-    public String displayAllTitles() {
-        return title;
-    }
 
-    //toString method to display the title of the notes
+    //toString to display all elements
     @Override
     public String toString() {
-        /*
+
         return "NotesModel{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", note='" + note + '\'' +
                 '}';
-         */
-        return title;
     }
 
     //getters and setters
