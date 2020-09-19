@@ -19,6 +19,7 @@ public class NoteListActivity extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
     static ArrayAdapter notesArrayAdapter;
     List<NotesModel> allNotes;
+    List<String> allTitles;
 
     public void addNote(View view) {
         Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
@@ -54,7 +55,11 @@ public class NoteListActivity extends AppCompatActivity {
     private void showItemsInListView(DataBaseHelper dataBaseHelper) {
         allNotes = dataBaseHelper.getAllNotes();
 
-        notesArrayAdapter = new ArrayAdapter<NotesModel>(NoteListActivity.this,android.R.layout.simple_list_item_1,allNotes);
+        for(NotesModel notes : allNotes) {
+            allTitles.add(notes.displayAllTitles());
+        }
+
+        notesArrayAdapter = new ArrayAdapter(NoteListActivity.this,android.R.layout.simple_list_item_1,allTitles);
 
         lv_notes.setAdapter((notesArrayAdapter));
     }

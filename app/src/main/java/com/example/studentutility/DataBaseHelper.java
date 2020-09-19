@@ -56,11 +56,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()) {
             do {
-                int notesID = cursor.getInt(0);
+                //int notesID = cursor.getInt(0);
                 String noteTitle = cursor.getString(1);
-                String noteBody = cursor.getString(2);
+                //String noteBody = cursor.getString(2);
 
-                NotesModel newNote = new NotesModel(notesID,noteTitle,noteBody);
+                NotesModel newNote = new NotesModel(noteTitle);
                 returnList.add(newNote);
             }while(cursor.moveToNext());
         }

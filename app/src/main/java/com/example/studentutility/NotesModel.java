@@ -14,17 +14,30 @@ public class NotesModel {
         this.note = note;
     }
 
+    public NotesModel(String title) {
+        //this.id = id;
+        this.title = title;
+        //this.note = note;
+    }
+
     public NotesModel() {
     }
 
-    //toString method to display all the elements at once.
+    public String displayAllTitles() {
+        return title;
+    }
+
+    //toString method to display the title of the notes
     @Override
     public String toString() {
-        return //"NotesModel{" +
-                //"id=" + id +
+        /*
+        return "NotesModel{" +
+                "id=" + id +
                 ", title='" + title + '\'' +
-                //", note='" + note + '\'' +
+                ", note='" + note + '\'' +
                 '}';
+         */
+        return title;
     }
 
     //getters and setters
