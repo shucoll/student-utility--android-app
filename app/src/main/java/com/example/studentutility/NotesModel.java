@@ -14,16 +14,12 @@ public class NotesModel {
         this.note = note;
     }
 
-    public NotesModel(String title) {
-        //this.id = id;
-        this.title = title;
-        //this.note = note;
-    }
 
     public NotesModel() {
     }
 
 
+    /*
     //toString to display all elements
     @Override
     public String toString() {
@@ -34,6 +30,16 @@ public class NotesModel {
                 ", note='" + note + '\'' +
                 '}';
     }
+
+     */
+
+    //to display all the titles in the list view
+    @Override
+    public String toString() {
+
+        return title;
+    }
+
 
     //getters and setters
 

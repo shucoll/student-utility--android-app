@@ -14,7 +14,7 @@ public class NotesActivity extends AppCompatActivity {
     Button btn_save;
     EditText et_title,et_note;
 
-    DataBaseHelper dataBaseHelper;
+    //DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class NotesActivity extends AppCompatActivity {
         et_title = findViewById(R.id.et_title);
         et_note = findViewById(R.id.et_note);
 
+        //to add/save the note
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,8 +41,9 @@ public class NotesActivity extends AppCompatActivity {
                         DataBaseHelper dataBaseHelper = new DataBaseHelper(NotesActivity.this);
 
                         boolean success = dataBaseHelper.addOne(notesModel);
-
-                        Toast.makeText(NotesActivity.this , "Add" + success , Toast.LENGTH_SHORT).show();
+                        if(success = true) {
+                            Toast.makeText(NotesActivity.this, "Note added", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 }catch(Exception e) {

@@ -45,6 +45,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
+    /*
+    public boolean deleteOne(int noteModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + noteModel;
+        Cursor cursor = db.rawQuery(queryString,null);
+        if(cursor.moveToFirst()) {
+            return true;
+        }
+        else return false;
+    }
+     */
+
+
+    public boolean deleteOne(NotesModel notesModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + notesModel.getId();
+        Cursor cursor = db.rawQuery(queryString,null);
+        if(cursor.moveToFirst()) {
+            return true;
+        }
+        else return false;
+    }
+
+
+
     public List<NotesModel> getAllNotes() {
         List<NotesModel> returnList = new ArrayList<>();
 
@@ -56,11 +83,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()) {
             do {
-                //int notesID = cursor.getInt(0);
+                int notesID = cursor.getInt(0);
                 String noteTitle = cursor.getString(1);
-                //String noteBody = cursor.getString(2);
+                String noteBody = cursor.getString(2);
 
-                NotesModel newNote = new NotesModel(noteTitle);
+                NotesModel newNote = new NotesModel(notesID,noteTitle,noteBody);
                 returnList.add(newNote);
             }while(cursor.moveToNext());
         }
