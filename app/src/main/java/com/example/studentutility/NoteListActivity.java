@@ -57,28 +57,32 @@ public class NoteListActivity extends AppCompatActivity {
         }
     }
 
-    //List<String>allTitles = new ArrayList<>();
-
-    /*
-    //to move to next activity on adding a new note
-    public void addNote(View view) {
-        Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
-
-        startActivity(intent);
-    }
-    */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_list);
 
-        //btn_add = findViewById(R.id.btn_add);
         lv_notes = findViewById(R.id.lv_notes);
 
         dataBaseHelper = new DataBaseHelper(NoteListActivity.this);
 
         showItemsInListView(dataBaseHelper);
+
+        //to open a note by passing its id to the NotesActivity
+        lv_notes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                NotesModel clickedNote = (NotesModel) adapterView.getItemAtPosition(i);
+                int receivedID = dataBaseHelper.getNoteID(clickedNote);
+
+                //Toast.makeText(NoteListActivity.this, "item " + receivedID, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
+                intent.putExtra("noteID",receivedID); //passing the noteID of clicked note to next activity.
+                startActivity(intent);
+            }
+        });
 
         //dialog box to delete a note
         lv_notes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -96,7 +100,7 @@ public class NoteListActivity extends AppCompatActivity {
                                 NotesModel clickedNote = (NotesModel) adapterView.getItemAtPosition(itemToDelete);
                                 boolean success = dataBaseHelper.deleteOne(clickedNote);
 
-                                if(success == true) {
+                                if(success) {
                                     Toast.makeText(NoteListActivity.this, "Note Deleted", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -130,12 +134,6 @@ public class NoteListActivity extends AppCompatActivity {
     private void showItemsInListView(DataBaseHelper dataBaseHelper) {
         List<NotesModel> allNotes;
         allNotes = dataBaseHelper.getAllNotes();
-
-        /*
-        for(NotesModel notes : allNotes) {
-            allTitles.add(notes.getTitle());
-        }
-         */
 
         notesArrayAdapter = new ArrayAdapter(NoteListActivity.this,android.R.layout.simple_list_item_1,allNotes);
 

@@ -32,6 +32,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //to add a new note to database
     public boolean addOne(NotesModel notesModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -45,29 +46,62 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
-    /*
-    public boolean deleteOne(int noteModel) {
-
+    //to update a existing note.
+    public boolean updateOne(NotesModel notesModel) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + noteModel;
-        Cursor cursor = db.rawQuery(queryString,null);
-        if(cursor.moveToFirst()) {
-            return true;
-        }
+        ContentValues cv = new ContentValues();
+
+        cv.put(NOTE_TITLE,notesModel.getTitle());
+        cv.put(NOTE_BODY,notesModel.getNote());
+
+        String updateID = Integer.toString(notesModel.getId());
+
+        long update = db.update(NOTES_TABLE,cv, NOTE_ID + " = ?",new String[] {updateID});
+
+        if(update == 1) return true;
         else return false;
     }
-     */
 
 
+    //to return the note id of clicked note to pass it to the NotesActivity
+    public int getNoteID(NotesModel notesModel) {
+
+        return notesModel.getId();
+    }
+
+    //to get the details of the clicked note to display it in the NotesActivity
+    public NotesModel getOne(int clickedNoteID) {
+        String queryString = "SELECT * FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + clickedNoteID;
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        NotesModel clickedNote = new NotesModel();
+
+        if(cursor.moveToFirst()) {
+            int notesID = cursor.getInt(0);
+            String noteTitle = cursor.getString(1);
+            String noteBody = cursor.getString(2);
+
+            clickedNote = new NotesModel(notesID,noteTitle,noteBody);
+        }
+        cursor.close();
+        db.close();
+
+        return clickedNote;
+    }
+
+    //deleting a note from database
     public boolean deleteOne(NotesModel notesModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + notesModel.getId();
         Cursor cursor = db.rawQuery(queryString,null);
         if(cursor.moveToFirst()) {
-            return true;
+            return false;
         }
-        else return false;
+        else return true;
     }
 
 
