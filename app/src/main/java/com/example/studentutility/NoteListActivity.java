@@ -1,11 +1,15 @@
 package com.example.studentutility;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,27 +22,58 @@ import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity {
 
-    Button btn_add;
+    //Button btn_add;
     ListView lv_notes;
-
     DataBaseHelper dataBaseHelper;
     static ArrayAdapter notesArrayAdapter;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.note_list_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+
+            case R.id.note_list_about :
+                return true;
+
+            case R.id.note_list_add :
+                //to move to next activity to add a new note
+                Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
+
+                startActivity(intent);
+                return true;
+
+            default: return false;
+        }
+    }
+
     //List<String>allTitles = new ArrayList<>();
 
+    /*
     //to move to next activity on adding a new note
     public void addNote(View view) {
         Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
 
         startActivity(intent);
     }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_list);
 
-        btn_add = findViewById(R.id.btn_add);
+        //btn_add = findViewById(R.id.btn_add);
         lv_notes = findViewById(R.id.lv_notes);
 
         dataBaseHelper = new DataBaseHelper(NoteListActivity.this);
@@ -61,7 +96,7 @@ public class NoteListActivity extends AppCompatActivity {
                                 NotesModel clickedNote = (NotesModel) adapterView.getItemAtPosition(itemToDelete);
                                 boolean success = dataBaseHelper.deleteOne(clickedNote);
 
-                                if(success = true) {
+                                if(success == true) {
                                     Toast.makeText(NoteListActivity.this, "Note Deleted", Toast.LENGTH_SHORT).show();
                                 }
 
