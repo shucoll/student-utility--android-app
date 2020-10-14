@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/notesButton"
+        android:id="@+id/notesBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
@@ -22,4 +22,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.08" />
+
+    <Button
+        android:id="@+id/timerBtn"
+        android:layout_width="187dp"
+        android:layout_height="271dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="205dp"
+        android:layout_marginBottom="83dp"
+        android:onClick="goToTimer"
+        android:text="Timer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

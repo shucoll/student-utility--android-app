@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerActivity">
+
+    <SeekBar
+        android:id="@+id/seek_Timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_Egg"
+        android:layout_width="381dp"
+        android:layout_height="571dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seek_Timer"
+        app:srcCompat="@drawable/etimer" />
+
+    <TextView
+        android:id="@+id/et_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:30"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/img_Egg"
+        app:layout_constraintEnd_toStartOf="@+id/img_Egg"
+        app:layout_constraintStart_toEndOf="@+id/img_Egg"
+        app:layout_constraintTop_toBottomOf="@+id/img_Egg"
+        app:layout_constraintVertical_bias="0.558" />
+
+    <Button
+        android:id="@+id/btn_Go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:background="#3498DB"
+        android:onClick="goClicked"
+        android:text="Go"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/img_Egg"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toEndOf="@+id/img_Egg"
+        app:layout_constraintTop_toBottomOf="@+id/et_count" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
