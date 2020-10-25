@@ -13,16 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity {
 
-    //Button btn_add;
     ListView lv_notes;
     DataBaseHelper dataBaseHelper;
     static ArrayAdapter notesArrayAdapter;
@@ -91,7 +88,7 @@ public class NoteListActivity extends AppCompatActivity {
                 final int itemToDelete = i;
                 new AlertDialog.Builder(NoteListActivity.this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Sure?")
+                        .setTitle("Delete Note")
                         .setMessage("Do you want to delete?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
