@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToCgpa(View view) {
-        Intent intent = new Intent(getApplicationContext(),CGPAActivity.class);
+    public void goToGpa(View view) {
+        Intent intent = new Intent(getApplicationContext(), GPAActivity.class);
 
         startActivity(intent);
     }

@@ -40,8 +40,6 @@ public class NoteListActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.note_list_about :
-                return true;
 
             case R.id.note_list_add :
                 //to move to next activity to add a new note

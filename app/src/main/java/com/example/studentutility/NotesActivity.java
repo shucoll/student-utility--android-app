@@ -37,8 +37,6 @@ public class NotesActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.note_about :
-                return true;
 
             //to add/save the note
             case R.id.note_save :

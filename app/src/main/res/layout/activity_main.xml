@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="goToCgpa"
+                    android:onClick="goToGpa"
                     android:orientation="vertical"
                     android:padding="16dp">
 
