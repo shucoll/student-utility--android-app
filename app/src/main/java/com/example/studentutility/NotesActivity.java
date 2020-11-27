@@ -12,8 +12,6 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -107,10 +105,8 @@ public class NotesActivity extends AppCompatActivity {
             DataBaseHelper dataBaseHelper = new DataBaseHelper(NotesActivity.this);
             NotesModel clickedNote;
             clickedNote = dataBaseHelper.getOne(clickedNoteID);
-            //int noteSelected = clickedNote.getId();
             et_title.setText(clickedNote.getTitle());
             et_note.setText(clickedNote.getNote());
-            //Toast.makeText(NotesActivity.this, "item " + noteSelected, Toast.LENGTH_SHORT).show();
 
         }
     }

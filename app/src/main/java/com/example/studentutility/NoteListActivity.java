@@ -71,8 +71,6 @@ public class NoteListActivity extends AppCompatActivity {
                 NotesModel clickedNote = (NotesModel) adapterView.getItemAtPosition(i);
                 int receivedID = dataBaseHelper.getNoteID(clickedNote);
 
-                //Toast.makeText(NoteListActivity.this, "item " + receivedID, Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getApplicationContext(),NotesActivity.class);
                 intent.putExtra("noteID",receivedID); //passing the noteID of clicked note to next activity.
                 startActivity(intent);
@@ -99,8 +97,6 @@ public class NoteListActivity extends AppCompatActivity {
                                     Toast.makeText(NoteListActivity.this, "Note Deleted", Toast.LENGTH_SHORT).show();
                                 }
 
-                                //allTitles.remove(i);
-                                //notesArrayAdapter.notifyDataSetChanged();
                                 showItemsInListView(dataBaseHelper);
 
 

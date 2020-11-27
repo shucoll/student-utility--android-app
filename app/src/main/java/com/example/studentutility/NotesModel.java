@@ -19,20 +19,6 @@ public class NotesModel {
     }
 
 
-    /*
-    //toString to display all elements
-    @Override
-    public String toString() {
-
-        return "NotesModel{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", note='" + note + '\'' +
-                '}';
-    }
-
-     */
-
     //to display all the titles in the list view
     @Override
     public String toString() {

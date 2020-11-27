@@ -34,14 +34,14 @@ public class GPAActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     credit = Double.parseDouble(Credit.getText().toString());
-                    gradeSt = Grade.getText().toString();
-                    if (!(gradeSt.equalsIgnoreCase("A")   ||
-                            gradeSt.equalsIgnoreCase("B") ||
-                            gradeSt.equalsIgnoreCase("C") ||
-                            gradeSt.equalsIgnoreCase("D") ||
-                            gradeSt.equalsIgnoreCase("F")))
+                    gradeSt = Grade.getText().toString().toUpperCase();
+                    if (!(gradeSt.equals("A")   ||
+                            gradeSt.equals("B") ||
+                            gradeSt.equals("C") ||
+                            gradeSt.equals("D") ||
+                            gradeSt.equals("F")))
 
-                        throw new ArithmeticException("Invalid Grade Input");
+                        throw new ArithmeticException("Invalid Grade Input\nEnter A,B,C,D or F\nwhere A = 4 & F = 0");
 
                     switch (gradeSt) {
 
@@ -71,12 +71,13 @@ public class GPAActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Course Added\nCredit : " + credit + "\nGrade : " + grade,Toast.LENGTH_SHORT).show();
                     Credit.setText("");
                     Grade.setText("");
+                    gpaView.setText("");
                     dataViewT.setText("Total Credit : " + String.valueOf(total_credit));
                     dataViewN.setText("Total Courses added : " + String.valueOf(total_course));
                     dataViewP.setText("Total Grade Points : " + String.valueOf(counter));
                 }
                 catch(ArithmeticException e) {
-                    Toast.makeText(GPAActivity.this , e.getMessage() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GPAActivity.this , e.getMessage() , Toast.LENGTH_LONG).show();
                 }
                 catch(Exception e) {
                     Toast.makeText(GPAActivity.this , "Error adding course" , Toast.LENGTH_SHORT).show();

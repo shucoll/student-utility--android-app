@@ -2,11 +2,10 @@ package com.example.studentutility;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.MediaParser;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
